@@ -17,7 +17,7 @@
 #define MAXIMUM_CHAR_CAT 50
 
 
-int numberOfCats = 0;
+NumCats numberOfCats = 0;
 struct Cat cats[MAXIMUM_CAT];
 
 char* genderList (const enum Gender gender){

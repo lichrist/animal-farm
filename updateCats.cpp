@@ -52,7 +52,7 @@ int fixCat(const int index){
     return 0;
 }
 
-int updateCatWeight(const int index, const float newWeight){
+int updateCatWeight(const int index, const Weight newWeight){
     if(index < 0){
         fprintf(stderr, "%s Error: No index!\n", PROGRAM_NAME);
         return 1;

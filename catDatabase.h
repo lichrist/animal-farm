@@ -21,7 +21,8 @@ enum Gender { UNKNOWN_GENDER, MALE, FEMALE };
 enum Breed { UNKNOWN_BREED , MAINE_COON , MANX , SHORTHAIR, PERSIAN , SPHINX };
 enum Color { BLACK, WHITE, RED, BLUE, GREEN, PINK};
 
-extern int numberOfCats;
+typedef float Weight;
+typedef int NumCats;
 
 struct Cat{
     char name[50];
@@ -34,7 +35,9 @@ struct Cat{
     unsigned long long license;
 };
 
+extern NumCats numberOfCats;
 extern struct Cat cats[MAXIMUM_CAT];
+
 
 char* genderList ( const enum Gender gender);
 char* breedList ( const enum Breed breed);
