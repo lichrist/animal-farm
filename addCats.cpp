@@ -16,7 +16,14 @@
 #include "catDatabase.h"
 #include "addCats.h"
 #include "config.h"
+#include <cassert>
+#include <iostream>
+#include <string>
 
+
+using namespace std;
+
+/*
 int addCat(const char name[], const enum Gender gender, const enum Breed breed, const bool isFixed, const Weight weight, const enum Color collarColor1, const enum Color collarColor2, const unsigned long long license){
 
     if(numberOfCats > MAXIMUM_CAT){
@@ -69,3 +76,4 @@ int addCat(const char name[], const enum Gender gender, const enum Breed breed, 
     numberOfCats++;
     return numberOfCats;
 }
+*/
