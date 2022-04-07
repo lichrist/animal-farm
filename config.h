@@ -12,3 +12,5 @@
 #pragma once
 
 #define PROGRAM_NAME "animalFarm1"
+
+const Weight UNKNOWN_WEIGHT = -1;
