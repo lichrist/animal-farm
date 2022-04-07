@@ -18,7 +18,7 @@
 #include "addCats.h"
 #include "updateCats.h"
 #include "config.h"
-
+/*
 int updateCatName(const int index, const char newName[]){
     if(index < 0){
         fprintf(stderr, "%s Error: No index!\n", PROGRAM_NAME);
@@ -107,3 +107,4 @@ int updateCatLicense(const int index, const unsigned long long license){
     cats[index].license = license;
     return 0;
 }
+*/
