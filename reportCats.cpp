@@ -14,6 +14,7 @@
 #include "reportCats.h"
 #include "config.h"
 
+/*
 void printCat(const int index){
     if(index < 0){
         fprintf(stderr, "%s animalFarm1: Bad cat [%d]\n", PROGRAM_NAME,  index);
@@ -50,3 +51,4 @@ int findCat(const char name[]){
     fprintf(stderr, "%s Cat was not found\n", PROGRAM_NAME);
     return 0;
 }
+*/
