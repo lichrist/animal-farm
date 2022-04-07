@@ -18,7 +18,7 @@
 
 
 NumCats numberOfCats = 0;
-struct Cat cats[MAXIMUM_CAT];
+//struct Cat cats[MAXIMUM_CAT];
 
 char* genderList (const enum Gender gender){
     char* strGender;

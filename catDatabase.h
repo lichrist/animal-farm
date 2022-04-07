@@ -24,6 +24,7 @@ enum Color { BLACK, WHITE, RED, BLUE, GREEN, PINK};
 typedef float Weight;
 typedef int NumCats;
 
+/*
 struct Cat{
     char name[50];
     enum Gender gender;
@@ -34,6 +35,7 @@ struct Cat{
     enum Color collarColor2;
     unsigned long long license;
 };
+*/
 
 extern NumCats numberOfCats;
 extern struct Cat cats[MAXIMUM_CAT];
