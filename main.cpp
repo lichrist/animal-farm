@@ -10,15 +10,9 @@
 /// @author Christian Li <lichrist@hawaii.edu>
 /// @date   03_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <stdbool.h>
 #include <iostream>
-#include "catDatabase.h"
 #include "addCats.h"
 #include "reportCats.h"
-#include "updateCats.h"
 #include "deleteCats.h"
 #include "Cat.h"
 

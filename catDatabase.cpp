@@ -9,15 +9,10 @@
 /// @date   03_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
 
 #include "Cat.h"
 #include "config.h"
 
-#define MAXIMUM_CAT      1024
 #define MAXIMUM_CHAR_CAT 50
 
 NumCats numberOfCats = 0;

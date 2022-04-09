@@ -18,8 +18,6 @@
 #include "config.h"
 #include "Cat.h"
 
-#define MAX_CATS     (1024)
-
 /*
 struct Cat{
     char name[MAX_CAT_NAME];

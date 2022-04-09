@@ -9,14 +9,11 @@
 /// @date   03_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <string.h>
-#include <stdio.h>
 #include <cassert>
 #include <iostream>
 
 #include "catDatabase.h"
 #include "Cat.h"
-#include "config.h"
 
 using namespace std;
 
