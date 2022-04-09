@@ -24,6 +24,20 @@ NumCats numberOfCats = 0;
 Cat* catDatabaseHeadPointer = nullptr;
 //struct Cat cats[MAXIMUM_CAT];
 
+extern bool validateDatabase(){
+    int catValidation = 0;
+
+    for(Cat* i = catDatabaseHeadPointer; i != nullptr; i = i->next){
+        if(!i->validate()){
+            return false;
+        }
+        catValidation++;
+    }
+    if(catValidation != numberOfCats){
+        return false;
+    }
+    return true;
+}
 
 char* genderName (const enum Gender gender){
     char* strGender;
