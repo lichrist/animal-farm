@@ -21,8 +21,31 @@
 #include <string>
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include "catDatabase.h"
+#include "addCats.h"
+#include "config.h"
+#include <cassert>
+#include <iostream>
+#include <string>
+
 using namespace std;
 
+bool addCat(Cat* newCat){
+    assert(newCat != nullptr);
+    if(newCat->validate() == false){
+        fprintf(stderr, "Invalid arugment!\n", PROGRAM_NAME);
+    }
+    assert(validateDatabase());
+    newCat->next = catDatabaseHeadPointer;
+    catDatabaseHeadPointer = newCat;
+    numberOfCats++;
+    assert(validateDatabase());
+    return true;
+}
 /*
 int addCat(const char name[], const enum Gender gender, const enum Breed breed, const bool isFixed, const Weight weight, const enum Color collarColor1, const enum Color collarColor2, const unsigned long long license){
 

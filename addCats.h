@@ -14,7 +14,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "catDatabase.h"
-#include <stdbool.h>
 
-extern int addCat(const char name[], const enum Gender gender, const enum Breed breed, const bool isFixed, const Weight weight, const enum Color collarColor1, const enum Color collarColor2, const unsigned long long license);
+#include "catDatabase.h"
+#include "Cat.h"
+
+//extern int addCat(const char name[], const enum Gender gender, const enum Breed breed, const bool isFixed, const Weight weight, const enum Color collarColor1, const enum Color collarColor2, const unsigned long long license);
+extern bool addCat(Cat* newCat);
