@@ -16,8 +16,3 @@
 
 bool printAllCats();
 extern Cat* findCat(const char name[]);
-/*
-extern void printCat(const int index);
-extern void printAllCats();
-extern int findCat(const char name[]);
-*/

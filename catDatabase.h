@@ -18,20 +18,6 @@
 #include "config.h"
 #include "Cat.h"
 
-/*
-struct Cat{
-    char name[MAX_CAT_NAME];
-    enum Gender gender;
-    enum Breed breed;
-    bool isFixed;
-    Weight weight;
-    enum Color collarColor1;
-    enum Color collarColor2;
-    unsigned long long license;
-};
-extern struct Cat database[MAX_CATS];
-*/
-
 extern NumCats numberOfCats;
 char* genderName(const enum Gender gender);
 char* breedName(const enum Breed breed);
