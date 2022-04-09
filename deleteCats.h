@@ -10,4 +10,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-extern void deleteAllCats();
+
+bool deleteCat(Cat* deleteThisCat);
+bool deleteAllCats();

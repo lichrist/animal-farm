@@ -9,9 +9,55 @@
 /// @date   03_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "catDatabase.h"
-#include "deleteCats.h"
+#include <string.h>
+#include <stdio.h>
+#include <cassert>
+#include <iostream>
 
-void deleteAllCats(){
-    numberOfCats = 0;
+#include "catDatabase.h"
+#include "Cat.h"
+#include "config.h"
+
+using namespace std;
+
+bool deleteCat(Cat* deleteThisCat)
+{
+    if (validateDatabase()) {
+
+        if (deleteThisCat == catDatabaseHeadPointer) {
+            catDatabaseHeadPointer = catDatabaseHeadPointer -> next;
+            delete deleteThisCat;
+            numberOfCats--;
+            assert(validateDatabase());
+            return true;
+        }
+
+        Cat *i = catDatabaseHeadPointer;
+        while (i != nullptr) {
+            if (i->next == deleteThisCat) {
+                i->next = deleteThisCat->next;
+                delete deleteThisCat;
+                numberOfCats--;
+                assert(validateDatabase());
+                return true;
+            } else {
+                i = i->next;
+            }
+        }
+    }
+    else{
+        return false;
+    }
+    return false;
 }
+
+bool deleteAllCats() {
+    while(catDatabaseHeadPointer != nullptr){
+        deleteCat(catDatabaseHeadPointer);
+    }
+    numberOfCats;
+    return true;
+}
+
+
+
