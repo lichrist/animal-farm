@@ -29,6 +29,15 @@ bool printAllCats(){
     return true;
 }
 
+Cat* findCat(const char* name){
+    for(Cat* i = catDatabaseHeadPointer; i != nullptr; i = i->next) {
+        if(strcmp(name, i->getName()) == 0){
+            return i;
+        }
+    }
+    fprintf(stderr, "%s: Cat: [%s] is not in the Database!", PROGRAM_NAME, name);
+    return 0;
+}
 
 
 

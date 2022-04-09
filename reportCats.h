@@ -15,7 +15,7 @@
 #include "Cat.h"
 
 bool printAllCats();
-
+extern Cat* findCat(const char name[]);
 /*
 extern void printCat(const int index);
 extern void printAllCats();
