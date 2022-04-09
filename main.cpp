@@ -14,13 +14,68 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <stdbool.h>
+#include <iostream>
 #include "catDatabase.h"
 #include "addCats.h"
 #include "reportCats.h"
 #include "updateCats.h"
 #include "deleteCats.h"
+#include "Cat.h"
+
+using namespace std;
 
 int main(){
+
+    cout << " Starting Animal Farm 2 " << endl;
+    addCat(new Cat("Loki", MALE, PERSIAN, 1.0));
+    addCat(new Cat("Milo", MALE, MANX, 1.1));
+    addCat(new Cat("Bella", FEMALE, MAINE_COON, 1.2));
+    addCat(new Cat("Kali", FEMALE, SHORTHAIR, 1.3));
+    addCat(new Cat("Trin", FEMALE, MANX, 1.4));
+    addCat(new Cat("Chili", MALE, SHORTHAIR, 1.5));
+    printAllCats();
+    deleteAllCats();
+    printAllCats();
+    cout << " Done with Animal Farm 2 " << endl;
+
+#ifdef DEBUG
+    Cat testCat = Cat();
+
+    //Default values set
+    cout << (testCat.getName()) << endl;
+    cout << genderName(testCat.getBreed()) << endl;
+    cout << testCat.isFixed() << endl;
+    cout << testCat.getWeight();
+
+    testCat.print();
+    testCat.validate();
+    testCat.setName(nullptr);
+    testCat.setName("");
+    testCat.validateGender(UNKNOWN_GENDER);
+    testCat.validateBreed(UNKNOWN_BREED);
+    testCat.setGender(MALE);
+    cout << genderName(testCat.getGender()) << endl;
+    testCat.setGender(FEMALE);
+    testCat.setBreed(PERSIAN);
+    cout << breedName(testCat.getGender()) << endl;
+    testCat.setBreed(SHORTHAIR);
+    cout << testCat.isFixed() << endl;
+    testCat.fixCat();
+    cout << testCat.isFixed() << endl;
+    testCat.setWeight(0);
+    Weight testCatWeight = (1/1024);
+    testCat.setWeight(testCatWeight);
+    cout << testCat.getWeight() << endl;
+    cout << testCat.validate() << endl;
+
+    Cat testCat1 = Cat("Cat1", UNKNOWN_GENDER, SHORTHAIR, 1);
+    Cat testCat2 = Cat("Cat2", FEMALE, UNKNOWN_BREED, 1);
+    Cat testCat3 = Cat("Cat3", MALE, MANX, UNKNOWN_WEIGHT);
+
+#endif
+
+/*
+    cout << " Starting Animal Farm 2 " << endl;
 
     addCat( "Loki", MALE, PERSIAN, true, 8.5, BLACK, WHITE, 101 ) ;
     addCat( "Milo", MALE, MANX, true, 7.0, BLACK, RED, 102 ) ;
@@ -80,6 +135,8 @@ int main(){
     printAllCats();
     deleteAllCats();
     printAllCats();
-    printf("Animal Farm 1 is Done \n");
+    printf("Done with Animal Farm 2 \n");
     return 0;
+#endif
+*/
 }
