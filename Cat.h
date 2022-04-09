@@ -10,9 +10,16 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-#include "config.h"
-#include "catDatabase.h"
 
+#include <iostream>
+#include <cstring>
+#include "config.h"
+
+
+#define MAXIMUM_CHAR_CAT 50
+enum Gender {UNKNOWN_GENDER, MALE, FEMALE};
+enum Breed {UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX};
+enum Color {BLACK, WHITE, RED, BLUE, GREEN, PINK};
 
 class Cat {
 protected:
@@ -49,6 +56,8 @@ public:
     //Constructor
     Cat();
     Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight);
+
+    virtual ~Cat();
 
 
     //Public Methods
