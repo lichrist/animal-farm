@@ -11,16 +11,21 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "catDatabase.h"
+#include <stdlib.h>
+#include <string.h>
+
+#include "Cat.h"
+#include "config.h"
 
 #define MAXIMUM_CAT      1024
 #define MAXIMUM_CHAR_CAT 50
 
-
 NumCats numberOfCats = 0;
+Cat* catDatabaseHeadPointer = nullptr;
 //struct Cat cats[MAXIMUM_CAT];
 
-char* genderList (const enum Gender gender){
+
+char* genderName (const enum Gender gender){
     char* strGender;
 
     switch(gender){
@@ -35,7 +40,7 @@ char* genderList (const enum Gender gender){
     return strGender;
 }
 
-char* breedList (const enum Breed breed){
+char* breedName (const enum Breed breed){
     char* strBreed;
 
     switch(breed){
@@ -55,7 +60,7 @@ char* breedList (const enum Breed breed){
     return strBreed;
 }
 
-char* colorList (const enum Color color){
+char* colorName (const enum Color color){
     char* strColor;
 
     switch(color){
@@ -74,3 +79,6 @@ char* colorList (const enum Color color){
     }
     return strColor;
 }
+
+
+
