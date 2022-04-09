@@ -82,7 +82,9 @@ void Cat::setGender(Gender newGender) {
         //Gender must be UNKNOWN_GENDER
         Cat::gender = newGender;
     }
-    fprintf(stderr, "%s: The gender of the cat(s) has an error! \n", PROGRAM_NAME);
+    else{
+        fprintf(stderr, "%s: The gender of the cat(s) has an error! \n", PROGRAM_NAME);
+    }
 }
 
 void Cat::setBreed(Breed newBreed) {
@@ -91,7 +93,9 @@ void Cat::setBreed(Breed newBreed) {
         //Breed must be UNKNOWN_BREED
         Cat::breed = newBreed;
     }
-    fprintf(stderr, "%s: The Breed of the cat(s) has an error! \n", PROGRAM_NAME);
+    else{
+        fprintf(stderr, "%s: The Breed of the cat(s) has an error! \n", PROGRAM_NAME);
+    }
 }
 
 void Cat::fixCat() {
