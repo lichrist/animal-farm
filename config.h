@@ -13,4 +13,6 @@
 
 #define PROGRAM_NAME "animalFarm1"
 
+typedef float Weight;
 const Weight UNKNOWN_WEIGHT = -1;
+typedef int NumCats;
