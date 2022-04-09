@@ -10,37 +10,33 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
+#include "config.h"
+#include "Cat.h"
 
-#define MAXIMUM_CAT      1024
-#define MAXIMUM_CHAR_CAT 50
-
-
-enum Gender { UNKNOWN_GENDER, MALE, FEMALE };
-enum Breed { UNKNOWN_BREED , MAINE_COON , MANX , SHORTHAIR, PERSIAN , SPHINX };
-enum Color { BLACK, WHITE, RED, BLUE, GREEN, PINK};
-
-typedef float Weight;
-typedef int NumCats;
+#define MAX_CATS     (1024)
 
 /*
 struct Cat{
-    char name[50];
+    char name[MAX_CAT_NAME];
     enum Gender gender;
     enum Breed breed;
     bool isFixed;
-    float weight;
+    Weight weight;
     enum Color collarColor1;
     enum Color collarColor2;
     unsigned long long license;
 };
+extern struct Cat database[MAX_CATS];
 */
 
 extern NumCats numberOfCats;
-extern struct Cat cats[MAXIMUM_CAT];
-
-
-char* genderList ( const enum Gender gender);
-char* breedList ( const enum Breed breed);
-char* colorList ( const enum Color color);
+char* genderName(const enum Gender gender);
+char* breedName(const enum Breed breed);
+char* colorName(const enum Color color);
+extern Cat* catDatabaseHeadPointer;
+extern bool validateDatabase();
