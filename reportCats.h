@@ -11,6 +11,10 @@
 
 #pragma once
 
+#include "config.h"
+#include "Cat.h"
+
+bool printAllCats();
 
 /*
 extern void printCat(const int index);

@@ -9,10 +9,28 @@
 /// @date   03_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "catDatabase.h"
-#include "addCats.h"
-#include "reportCats.h"
+#include <iostream>
+#include <cassert>
+
 #include "config.h"
+#include "reportCats.h"
+#include "catDatabase.h"
+#include "Cat.h"
+
+using namespace std;
+
+bool printAllCats(){
+    assert(validateDatabase());
+
+    for(Cat* i = catDatabaseHeadPointer; i != nullptr; i = i->next) {
+        i->print();
+    }
+    assert(validateDatabase());
+    return true;
+}
+
+
+
 
 /*
 void printCat(const int index){
@@ -23,7 +41,7 @@ void printCat(const int index){
         fprintf(stderr, "%s animalFarm1: Bad cat [%d]\n", PROGRAM_NAME, index);
     }
 
-    printf("cat index = [%d] name = [%s] gender = [%s] breed = [%s] isFixed = [%d] weight = [%f] color#1 = [%s] color#2 = [%s] license = [%llu] \n", index, cats[index].name, genderList(cats[index].gender), breedList(cats[index].breed), cats[index].isFixed, cats[index].weight, colorList(cats[index].collarColor1), colorList(cats[index].collarColor2), cats[index].license);
+    printf("cat index = [%d] name = [%s] gender = [%s] breed = [%s] isFixed = [%d] weight = [%f] color#1 = [%s] color#2 = [%s] license = [%llu] \n", index, cats[index].name, genderName(cats[index].gender), breedName(cats[index].breed), cats[index].isFixed, cats[index].weight, colorList(cats[index].collarColor1), colorList(cats[index].collarColor2), cats[index].license);
 }
 
 void printAllCats(){
@@ -32,7 +50,7 @@ void printAllCats(){
     }
     for(int i=0; i < numberOfCats; i++){
         //printCat(i);
-        printf("cat index = [%d] name = [%s] gender = [%s] breed = [%s] isFixed = [%d] weight = [%f] color#1 = [%s] color#2 = [%s] license = [%llu] \n", i, cats[i].name, genderList(cats[i].gender), breedList(cats[i].breed), cats[i].isFixed, cats[i].weight, colorList(cats[i].collarColor1), colorList(cats[i].collarColor2), cats[i].license);
+        printf("cat index = [%d] name = [%s] gender = [%s] breed = [%s] isFixed = [%d] weight = [%f] color#1 = [%s] color#2 = [%s] license = [%llu] \n", i, cats[i].name, genderName(cats[i].gender), breedName(cats[i].breed), cats[i].isFixed, cats[i].weight, colorList(cats[i].collarColor1), colorList(cats[i].collarColor2), cats[i].license);
     }
 
 }
