@@ -17,9 +17,11 @@ public:
 //////////////Enumerations/////////////////
     enum UnitOfWeight { POUND, KILO, SLUG};
 
-    static const float UNKNOWN_WEIGHT;
-    static const float KILOS_IN_A_POUND;
-    static const float SLUGS_IN_A_POUND;
+    typedef float t_weight;
+
+    static const t_weight UNKNOWN_WEIGHT;
+    static const t_weight KILOS_IN_A_POUND;
+    static const t_weight SLUGS_IN_A_POUND;
 
     static const std::string POUND_LABEL;
     static const std::string KILO_LABEL;
@@ -29,8 +31,11 @@ public:
     UnitOfWeight getUnitOfWeight() const noexcept;
 
 private:
-    float weight;
-    float maxWeight;
+
+    void setMaxWeight(t_weight newMaxWeight);
+
+    t_weight weight;
+    t_weight maxWeight;
     enum UnitOfWeight unitOfWeight;
     bool bIsKnown;
     bool bHasMax;
@@ -38,38 +43,37 @@ private:
 public:
 //////////////Constructors/////////////////
     Weight() noexcept;
-    Weight(float newWeight);
-    Weight( UnitOfWeight newUnitOfWeight ) noexcept;
-    Weight( float newWeight, UnitOfWeight newUnitOfWeight ) noexcept;
-    Weight( float newWeight, float newMaxWeight );
-    Weight( UnitOfWeight newUnitOfWeight, float newMaxWeight );
-    Weight( float newWeight, UnitOfWeight newUnitOfWeight, float newMaxWeight );
+    Weight(t_weight newWeight);
+    Weight(UnitOfWeight newUnitOfWeight ) noexcept;
+    Weight(t_weight newWeight, UnitOfWeight newUnitOfWeight ) noexcept;
+    Weight(t_weight newWeight, t_weight newMaxWeight );
+    Weight(UnitOfWeight newUnitOfWeight, t_weight newMaxWeight );
+    Weight(t_weight newWeight, UnitOfWeight newUnitOfWeight, t_weight newMaxWeight );
 
 public:
 //////////////Getters and Setters/////////////////
-    void setWeight(float newWeight);
-    void setWeight(float newWeight, UnitOfWeight weightUnits);
-    void setMaxWeight(float newMaxWeight);
+    void setWeight(t_weight newWeight);
+    void setWeight(t_weight newWeight, UnitOfWeight weightUnits);
 
-    bool isWeightValid(float checkWeight) const noexcept;
+    bool isWeightValid(t_weight checkWeight) const noexcept;
     bool validate() const noexcept;
     void dump() const noexcept;
     bool isWeightKnown() const noexcept;
     bool hasMaxWeight() const noexcept;
-    float getWeight() const noexcept;
-    float getWeight(UnitOfWeight weightUnits) const noexcept;
-    float getMaxWeight() const noexcept;
+    t_weight getWeight() const noexcept;
+    t_weight getWeight(UnitOfWeight weightUnits) const noexcept;
+    t_weight getMaxWeight() const noexcept;
     UnitOfWeight getWeightUnit() const noexcept;
 
 public:
     bool operator==(const Weight &rhs_Weight) const;
     bool operator<(const Weight &rhs_Weight) const;
-    Weight & operator+=(float rhs_addToWeight);
+    Weight & operator+=(t_weight rhs_addToWeight);
 
     //////////////Static public members/////////////////
-    static float fromKilogramToPound(float kilogram) noexcept;
-    static float fromPoundToKilogram(float pound) noexcept;
-    static float fromSlugToPound(float slug) noexcept;
-    static float fromPoundToSlug(float pound) noexcept;
-    static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
+    static float fromKilogramToPound(t_weight kilogram) noexcept;
+    static float fromPoundToKilogram(t_weight pound) noexcept;
+    static float fromSlugToPound(t_weight slug) noexcept;
+    static float fromPoundToSlug(t_weight pound) noexcept;
+    static float convertWeight(t_weight fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
 };

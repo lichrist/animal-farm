@@ -9,12 +9,16 @@
 /// @date   19_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 #include "Weight.h"
+#include <iostream>
+#include <iomanip>
 #include <cassert>
+#include <cstring>
+#include <stdexcept>
 #include <iostream>
 
-const float Weight::UNKNOWN_WEIGHT = -1 ;
-const float Weight::KILOS_IN_A_POUND = 0.453592 ;
-const float Weight::SLUGS_IN_A_POUND = 0.031081 ;
+const Weight::t_weight Weight::UNKNOWN_WEIGHT = -1 ;
+const Weight::t_weight Weight::KILOS_IN_A_POUND = 0.453592 ;
+const Weight::t_weight Weight::SLUGS_IN_A_POUND = 0.031081 ;
 
 const std::string Weight::POUND_LABEL = "Pound";
 const std::string Weight::KILO_LABEL = "Kilo";
@@ -28,7 +32,7 @@ Weight::Weight() noexcept {
     weight = UNKNOWN_WEIGHT;
 }
 
-Weight::Weight(float newWeight) {
+Weight::Weight(Weight::t_weight newWeight) {
     bIsKnown = false;
     bHasMax = false;
     unitOfWeight = POUND;
@@ -36,7 +40,7 @@ Weight::Weight(float newWeight) {
     weight = newWeight;
 }
 
-Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
+Weight::Weight(const Weight::UnitOfWeight newUnitOfWeight) noexcept {
     bIsKnown = true;
     bHasMax = false;
     unitOfWeight = newUnitOfWeight;
@@ -44,7 +48,7 @@ Weight::Weight(Weight::UnitOfWeight newUnitOfWeight) noexcept {
     weight = UNKNOWN_WEIGHT;
 }
 
-Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) noexcept {
+Weight::Weight(Weight::t_weight newWeight, const Weight::UnitOfWeight newUnitOfWeight) noexcept {
     bIsKnown = true;
     bHasMax = false;
     unitOfWeight = newUnitOfWeight;
@@ -52,7 +56,7 @@ Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight) noexcept {
     weight = newWeight;
 }
 
-Weight::Weight(float newWeight, float newMaxWeight) {
+Weight::Weight(Weight::t_weight newWeight, Weight::t_weight newMaxWeight) {
     bIsKnown = true;
     bHasMax = true;
     unitOfWeight = POUND;
@@ -60,7 +64,7 @@ Weight::Weight(float newWeight, float newMaxWeight) {
     weight = newWeight;
 }
 
-Weight::Weight(Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
+Weight::Weight(Weight::UnitOfWeight newUnitOfWeight, Weight::t_weight newMaxWeight) {
     bIsKnown = false;
     bHasMax = true;
     unitOfWeight = newUnitOfWeight;
@@ -68,7 +72,7 @@ Weight::Weight(Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
     maxWeight = newMaxWeight;
 }
 
-Weight::Weight(float newWeight, Weight::UnitOfWeight newUnitOfWeight, float newMaxWeight) {
+Weight::Weight(Weight::t_weight newWeight, Weight::UnitOfWeight newUnitOfWeight, Weight::t_weight newMaxWeight) {
     bIsKnown = true;
     bHasMax = true;
     unitOfWeight = newUnitOfWeight;
@@ -84,16 +88,16 @@ bool Weight::hasMaxWeight() const noexcept {
     return bHasMax;
 }
 
-float Weight::getWeight() const noexcept {
+Weight::t_weight Weight::getWeight() const noexcept {
     return weight;
 }
 
-float Weight::getWeight(Weight::UnitOfWeight weightUnits) const noexcept {
-    float currWeight = convertWeight(weight, unitOfWeight, weightUnits);
+Weight::t_weight Weight::getWeight(Weight::UnitOfWeight weightUnits) const noexcept {
+    Weight::t_weight currWeight = convertWeight(weight, unitOfWeight, weightUnits);
     return currWeight;
 }
 
-float Weight::getMaxWeight() const noexcept {
+Weight::t_weight Weight::getMaxWeight() const noexcept {
     return maxWeight;
 }
 
@@ -101,20 +105,20 @@ Weight::UnitOfWeight Weight::getWeightUnit() const noexcept {
     return unitOfWeight;
 }
 
-void Weight::setWeight(float newWeight) {
+void Weight::setWeight(Weight::t_weight newWeight) {
     weight = newWeight;
 }
 
-void Weight::setWeight(float newWeight, Weight::UnitOfWeight weightUnits) {
+void Weight::setWeight(Weight::t_weight newWeight, Weight::UnitOfWeight weightUnits) {
     weight = newWeight;
     unitOfWeight = weightUnits;
 }
 
-void Weight::setMaxWeight(float newMaxWeight) {
+void Weight::setMaxWeight(Weight::t_weight newMaxWeight) {
     maxWeight = newMaxWeight;
 }
 
-bool Weight::isWeightValid(float checkWeight) const noexcept{
+bool Weight::isWeightValid(Weight::t_weight checkWeight) const noexcept{
     if( bHasMax ){
         if(checkWeight > maxWeight){
             return false;
@@ -146,23 +150,23 @@ bool Weight::validate() const noexcept {
     return true;
 }
 ///////////////////////Conversion/////////////////////////
-float Weight::fromKilogramToPound(float kilogram) noexcept {
+Weight::t_weight Weight::fromKilogramToPound(Weight::t_weight kilogram) noexcept {
     return kilogram/Weight::KILOS_IN_A_POUND;
 }
 
-float Weight::fromPoundToKilogram(float pound) noexcept {
+Weight::t_weight Weight::fromPoundToKilogram(Weight::t_weight pound) noexcept {
     return pound*Weight::KILOS_IN_A_POUND;
 }
 
-float Weight::fromSlugToPound(float slug) noexcept {
+Weight::t_weight Weight::fromSlugToPound(Weight::t_weight slug) noexcept {
     return slug/Weight::SLUGS_IN_A_POUND;
 }
 
-float Weight::fromPoundToSlug(float pound) noexcept {
+Weight::t_weight Weight::fromPoundToSlug(Weight::t_weight pound) noexcept {
     return pound*Weight::SLUGS_IN_A_POUND;
 }
 
-float Weight::convertWeight(float fromWeight, Weight::UnitOfWeight fromUnit, Weight::UnitOfWeight toUnit) noexcept{
+float Weight::convertWeight(Weight::t_weight fromWeight, Weight::UnitOfWeight fromUnit, Weight::UnitOfWeight toUnit) noexcept{
     switch(fromUnit){
         case POUND:
             switch(toUnit){
@@ -211,7 +215,7 @@ bool Weight::operator<(const Weight &rhs_Weight) const{
     return lhs_weight < rhs_weight;
 }
 
-Weight &Weight::operator+=(float rhs_addToWeight){
+Weight &Weight::operator+=(t_weight rhs_addToWeight){
     weight += rhs_addToWeight;
     return *this;
 }
