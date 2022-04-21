@@ -63,8 +63,8 @@ Node *List::get_next(const Node *currentNode) {
 }
 
 void List::deleteAllNodes() noexcept {
-    while( head != nullptr ) {
+    while (head != nullptr) {
         pop_front();
     }
 
-
+}
