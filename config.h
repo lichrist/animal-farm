@@ -10,9 +10,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
+#include <iomanip>
 
 #define PROGRAM_NAME "animalFarm1"
 
-typedef float Weight;
-const Weight UNKNOWN_WEIGHT = -1;
+
 typedef int NumCats;
+
+#define FORMAT_LINE_FOR_DUMP( className, member ) std::cout << std::setfill( ' ' ) << std::left << std::boolalpha << std::setw( 8) << (className) << std::setw(20) << (member) << std::setw(52)
