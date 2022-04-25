@@ -8,13 +8,11 @@
 /// @author Christian Li <lichrist@hawaii.edu>
 /// @date   20_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
-#include <cassert>
-#include "config.h"
 #include "List.h"
+#include <cassert>
 
 bool List::empty() const noexcept {
-    if(head == nullptr){
+    if (head == nullptr){
         return true;
     }
     return false;
@@ -25,13 +23,12 @@ unsigned int List::size() const noexcept {
 }
 
 bool List::isIn(Node *aNode) const {
-    Node* currentList = head;
-
-    while (currentList != nullptr)
+    Node* current = head; // Initialize current
+    while (current != nullptr)
     {
-        if (currentList == aNode)
+        if (current == aNode)
             return true;
-        currentList = currentList->next;
+        current = current->next;
     }
     return false;
 }
@@ -40,31 +37,28 @@ bool List::isSorted() const noexcept {
     if (head == nullptr) {
         return true;
     }
-    for (Node* head; head->next != nullptr; head = head->next) {
-        if (head > head->next){
+    for (Node* i = head; i->next != nullptr; i = i->next) {
+        if (i > i->next){
             return false;
         }
     }
     return true;
 }
 
-Node* List::get_first() const noexcept {
-    if(!empty()){
-        return head;
-    }
-    return nullptr;
+Node *List::get_first() const noexcept {
+    return head;
 }
 
 Node *List::get_next(const Node *currentNode) {
-    if (currentNode->next == nullptr){
-        throw std::invalid_argument("currentNode is nullptr.");
+    if (currentNode == nullptr){
+        throw std::invalid_argument("The next Node is nullptr.");
     }
     return currentNode->next;
 }
 
 void List::deleteAllNodes() noexcept {
-    while (head != nullptr) {
+    assert( validate() );
+    while( head != nullptr ) {
         pop_front();
     }
-
 }
