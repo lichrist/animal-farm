@@ -10,3 +10,95 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "Animal.h"
+#include <cassert>
+
+const std::string Animal::KINGDOM_NAME = "Animalia";
+
+Animal::Animal(const Weight::t_weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies) {
+    Weight(Weight::UNKNOWN_WEIGHT, newMaxWeight);
+
+    if (validateClassification(newClassification)){
+        classification = newClassification;
+    }
+    if (validateSpecies(newSpecies)){
+        species = newSpecies;
+    }
+}
+
+Animal::Animal(const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies) {
+    setGender(newGender);
+    Weight(newWeight, newMaxWeight);
+
+    if (validateClassification(newClassification)){
+        classification = newClassification;
+    }
+    if (validateSpecies(newSpecies)){
+        species = newSpecies;
+    }
+}
+
+std::string Animal::getKingdom() const noexcept {
+    return "Animalia";
+}
+
+std::string Animal::getClassification() const noexcept {
+    return classification;
+}
+
+std::string Animal::getSpecies() const noexcept {
+    return species;
+}
+
+Gender Animal::getGender() const noexcept {
+    return gender;
+}
+
+Weight::t_weight Animal::getWeight() const noexcept {
+    return weight.getWeight();
+}
+
+void Animal::setGender(const Gender newGender) {
+    if (gender == Gender::UNKNOWN_GENDER){
+        gender = newGender;
+    }
+    else {
+        throw std::logic_error("You tried to change the gender of an Animal!");
+    }
+}
+
+void Animal::setWeight(const Weight::t_weight newWeight) {
+    weight.setWeight(newWeight);
+}
+
+bool Animal::validateClassification(const std::string &checkClassification) noexcept {
+    if (checkClassification == "Mammalia"){ ///Cat class
+        return true;
+    }
+    return false;
+}
+
+bool Animal::validateSpecies(const std::string &checkSpecies) noexcept {
+    if (checkSpecies == "Felis Catus"){ ///Cat species
+        return true;
+    }
+    return false;
+}
+
+void Animal::dump() const noexcept {
+    Node::dump();
+    FORMAT_LINE_FOR_DUMP( "Animal", "this" ) << this << std::endl ;
+    FORMAT_LINE_FOR_DUMP( "Animal", "kingdom" ) << getKingdom() << std::endl ;
+    FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << getClassification() << std::endl;
+    FORMAT_LINE_FOR_DUMP( "Animal", "species" ) << getSpecies() << std::endl ;
+    FORMAT_LINE_FOR_DUMP( "Animal", "gender" ) << getGender() << std::endl ;
+    FORMAT_LINE_FOR_DUMP( "Animal", "weight" ) << getWeight() << " out of " << weight.getMaxWeight() << weight.getUnitOfWeight() << std::endl;
+}
+
+bool Animal::validate() const noexcept {
+    assert( Node::validate() );
+    assert( !getKingdom().empty() );
+    assert( validateClassification(getClassification()) );
+    assert( validateSpecies( getSpecies() ));
+    assert( weight.validate() );
+    return Node::validate();
+}
