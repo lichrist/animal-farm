@@ -8,7 +8,6 @@
 /// @author Christian Li <lichrist@hawaii.edu>
 /// @date   03_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
 #pragma once
 
 #include <iostream>
@@ -16,6 +15,7 @@
 #include "config.h"
 #include "Mammal.h"
 
+enum Breed {UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX};
 
 /// Felis Catus
 ///
@@ -76,6 +76,9 @@ public:  /////////////////////// Static Public Methods /////////////////////////
     // Static methods are `const` by default
     static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
 };
+
+
+
 
 
 
