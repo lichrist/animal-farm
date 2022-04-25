@@ -8,7 +8,6 @@
 /// @author Christian Li <lichrist@hawaii.edu>
 /// @date   20_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
 #pragma once
 
 #include <iostream>
@@ -34,10 +33,7 @@ protected:
 
 public:
     ///Outputs contents of this object
-    virtual void dump() const{
-        FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << std::endl ;
-        FORMAT_LINE_FOR_DUMP( "Node", "next" ) << next << std::endl ;
-    }
+    virtual void dump() const;
 
     ///Compare two nodes: Is the left greater than the right?
     virtual bool operator>(const Node& rightSide){
