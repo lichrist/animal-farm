@@ -8,9 +8,10 @@
 /// @author Christian Li <lichrist@hawaii.edu>
 /// @date   20_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
+#include "SinglyLinkedList.h"
+#include "Node.h"
 #include <iostream>
 
-#include "SinglyLinkedList.h"
 
 SinglyLinkedList::SinglyLinkedList() {
     head = nullptr;
@@ -21,9 +22,19 @@ void SinglyLinkedList::push_front(Node *newNode) {
         throw std::invalid_argument("New node cannot be nullptr");
     }
 
-    newNode = new Node;
-    newNode->next = head->next;
-    head->next = newNode;
+    if(!newNode->Node::validate()){
+        throw std::domain_error("New node is not valid");
+    }
+
+    if (head != nullptr){
+        newNode->next = head;
+        head = newNode;
+    }
+    else{
+        newNode->next = nullptr;
+        head = newNode;
+    }
+    count++;
 }
 
 Node *SinglyLinkedList::pop_front() noexcept {
@@ -33,23 +44,37 @@ Node *SinglyLinkedList::pop_front() noexcept {
     Node* remove = head;
     head = head->next;
     delete remove;
+    count--;
     return head;
 }
 
 void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
     if (currentNode == nullptr || newNode == nullptr){
-        throw std::invalid_argument("Node annot be nullptr");
+        throw std::invalid_argument("Node cannot be nullptr");
     }
-
-    newNode = new Node();
+    if(List::empty()){
+        throw std::logic_error("The List is empty.");
+    }
+    if(!newNode->validate()){
+        throw std::domain_error("newNode is not valid.");
+    }
     newNode->next = currentNode->next;
     currentNode->next = newNode;
+    count++;
 }
 
 void SinglyLinkedList::dump() const noexcept {
-
+    std::cout << "SinglyLinkedList: head=[" << head << "]" << std::endl;
+    Node* currNode = head;
+    while (currNode != nullptr){
+        currNode->dump();
+        currNode = currNode -> next;
+    }
 }
 
 bool SinglyLinkedList::validate() const noexcept {
-    return false;
+    for(Node* i = head; i != nullptr ; i = i->next){
+        i->Node::validate();
+    }
+    return true;
 }
