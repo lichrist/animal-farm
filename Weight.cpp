@@ -10,11 +10,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 #include "Weight.h"
 #include <iostream>
-#include <iomanip>
-#include <cassert>
-#include <cstring>
-#include <stdexcept>
-#include <iostream>
 
 const Weight::t_weight Weight::UNKNOWN_WEIGHT = -1 ;
 const Weight::t_weight Weight::KILOS_IN_A_POUND = 0.453592 ;
@@ -229,11 +224,14 @@ void Weight::dump() const noexcept{
     std::cout << "Value of MaxWeight: " << maxWeight << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight){
-    switch(rhs_UnitOfWeight){
-        case Weight::POUND: return lhs_stream << Weight::POUND_LABEL ;
-        case Weight::KILO: return lhs_stream << Weight::KILO_LABEL ;
-        case Weight::SLUG: return lhs_stream << Weight::SLUG_LABEL ;
+std::ostream& operator<<(std::ostream& lhs_stream, const Weight::UnitOfWeight rhs_UnitOfWeight) {
+    switch (rhs_UnitOfWeight) {
+        case Weight::POUND:
+            return lhs_stream << Weight::POUND_LABEL;
+        case Weight::KILO:
+            return lhs_stream << Weight::KILO_LABEL;
+        case Weight::SLUG:
+            return lhs_stream << Weight::SLUG_LABEL;
     }
-    return lhs_stream << Weight::POUND_LABEL ;
+    return lhs_stream << Weight::POUND_LABEL;
 }
