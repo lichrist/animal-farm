@@ -78,6 +78,3 @@ public:   ////////////////////////// Methods //////////////////////////////////
     void dump() const noexcept override;       ///< Output the contents of this object
     bool validate() const noexcept override;   ///< Check to see if the Animal object is valid
 };
-
-
-
