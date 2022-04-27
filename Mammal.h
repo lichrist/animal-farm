@@ -8,7 +8,6 @@
 /// @author Christian Li <lichrist@hawaii.edu>
 /// @date   20_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
 #pragma once
 
 #include "Animal.h"
@@ -38,6 +37,7 @@ public:   /////////////////////// Constructors ////////////////////////////////
     ) : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ) {
         setColor( newColor );
     };
+
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
     Color getColor() const noexcept { return color; }  ///< Get the color
