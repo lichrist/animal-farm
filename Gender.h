@@ -8,7 +8,6 @@
 /// @author Christian Li <lichrist@hawaii.edu>
 /// @date   19_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
 #pragma once
 #include <iostream>
 #include "config.h"
